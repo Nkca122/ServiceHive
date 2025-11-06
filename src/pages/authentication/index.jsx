@@ -34,6 +34,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
+import { useNavigate } from "react-router-dom";
+
 const signupSchema = z
   .object({
     firstName: z.string().min(1, "First name is required"),
@@ -58,6 +60,7 @@ const signinSchema = z.object({
 
 export default function Authentication() {
   const [state, setState] = useState("signup");
+  const naviagte = useNavigate();
 
   // signup form
   const signupForm = useForm({
@@ -74,6 +77,7 @@ export default function Authentication() {
 
   const handleSignup = (values) => {
     console.log("✅ Signup Data:", values);
+    naviagte("/dashboard");
   };
 
   // signin form
@@ -88,6 +92,7 @@ export default function Authentication() {
 
   const handleSignin = (values) => {
     console.log("✅ Signin Data:", values);
+    naviagte("/dashboard");
   };
 
   return (
